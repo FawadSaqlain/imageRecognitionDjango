@@ -1,0 +1,8 @@
+play store 6,en_badge_web_generic.png
+play store 7,en_badge_web_generic.png
+noticeboard,NoticeBoardtitle.png
+cui,logo_with_text.png
+cui student,CUOnlineStudentConsole.png
+parant console,CUOnlineParentConsole.png
+car,car.jpeg
+car,car.jpeg

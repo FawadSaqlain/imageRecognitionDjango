@@ -1,19 +1,17 @@
-{% load static %}
+<!-- upload.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Upload Image</title>
 </head>
 <body>
-    <h1>img start</h1>
-    <!-- Display images -->
+    <h1>Upload Image</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        <p>Title: <input type="text" name="title"></p>
+        <p>Image: <input type="file" name="image"></p>
         <button type="submit">Upload</button>
-    </form>    
-    <h1>img end</h1>
+        <a href="{% url 'view_images' %}"><button type="button">view image</button></a>
+    </form>
 </body>
 </html>
