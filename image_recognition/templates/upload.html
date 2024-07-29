@@ -1,17 +1,67 @@
-<!-- upload.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Upload Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="file"] {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: calc(100% - 40px);
+            max-width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button[type="button"] {
+            background-color: #007bff;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Upload Image</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p>Title: <input type="text" name="title"></p>
-        <p>Image: <input type="file" name="image"></p>
-        <button type="submit">Upload</button>
-        <a href="{% url 'view_images' %}"><button type="button">view image</button></a>
-    </form>
+    <div class="container">
+        <h1>Upload Image</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p><input type="text" name="title" placeholder="Title"></p>
+            <p><input type="file" name="image"></p>
+            <button type="submit">Upload</button>
+            <a href="{% url 'view_images' %}"><button type="button">View Images</button></a>
+        </form>
+    </div>
 </body>
 </html>

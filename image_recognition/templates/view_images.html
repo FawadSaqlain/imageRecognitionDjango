@@ -1,26 +1,79 @@
-<!-- view_images.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>View Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .upload-button {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .upload-button button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .upload-button button:hover {
+            background-color: #45a049;
+        }
+        .image-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .image-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .image-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .image {
+            width: 300px;
+            height: 300px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+        .predictions {
+            list-style-type: disc;
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
 </head>
 <body>
-    <a href="{% url 'upload_image' %}"><button type="button">upload image</button></a>
+    <div class="upload-button">
+        <a href="{% url 'upload_image' %}"><button type="button">Upload Image</button></a>
+    </div>
 
     <h1>Uploaded Images</h1>
 
-    <ul>
+    <div class="image-container">
         {% for item in images_with_predictions %}
-        <li>
-            <h2>{{ item.image.title }}</h2>
-            <img src="{{ MEDIA_URL }}images/{{ item.image.filename }}" alt="{{ item.image.title }}">
-            <ul>
+        <div class="image-item">
+            <h2 class="image-title">{{ item.image.title }}</h2>
+            <img src="{{ MEDIA_URL }}images/{{ item.image.filename }}" alt="{{ item.image.title }}" class="image">
+            <ul class="predictions">
                 {% for each_pred in item.predictions %}
                 <li>{{ each_pred }}</li>
                 {% endfor %}
             </ul>
-        </li>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>
