@@ -5,13 +5,21 @@
     <title>View Images</title>
 </head>
 <body>
+    <a href="{% url 'upload_image' %}"><button type="button">upload image</button></a>
+
     <h1>Uploaded Images</h1>
+
     <ul>
-        {% for image in images %}
-            <li>
-                <h2>{{ image.title }}</h2>
-                <img src="{{ MEDIA_URL }}images/{{ image.filename }}" alt="{{ image.title }}">
-            </li>
+        {% for item in images_with_predictions %}
+        <li>
+            <h2>{{ item.image.title }}</h2>
+            <img src="{{ MEDIA_URL }}images/{{ item.image.filename }}" alt="{{ item.image.title }}">
+            <ul>
+                {% for each_pred in item.predictions %}
+                <li>{{ each_pred }}</li>
+                {% endfor %}
+            </ul>
+        </li>
         {% endfor %}
     </ul>
 </body>
