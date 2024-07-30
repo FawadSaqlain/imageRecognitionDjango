@@ -1,3 +1,5 @@
+
+'''
 import tensorflow as tf #loading the model and preprocessing the images
 import matplotlib.pyplot as plt #displaying the images and predictions.
 model = tf.keras.applications.MobileNetV2(weights='imagenet')
@@ -35,3 +37,8 @@ for image_path in img_paths:
     predicted_classes=get_prediction(input_image)
 
     printing_preditions(img,predicted_classes)
+'''
+
+from .prediction_functions import img_paths , output
+
+print(img_paths)

@@ -57,10 +57,11 @@
         <h1>Upload Image</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <p><input type="text" name="title" placeholder="Title"></p>
+            <p><input type="text" name="title" required placeholder="Title"></p>
             <p><input type="file" name="image"></p>
             <button type="submit">Upload</button>
             <a href="{% url 'view_images' %}"><button type="button">View Images</button></a>
+            <a href="{% url 'logout' %}"><button type="button">Logout</button></a>
         </form>
     </div>
 </body>

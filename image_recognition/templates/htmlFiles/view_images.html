@@ -12,19 +12,19 @@
         h1 {
             color: #333;
         }
-        .upload-button {
-            display: inline-block;
+        .button-group {
             margin-bottom: 20px;
         }
-        .upload-button button {
+        .button-group button {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
             border: none;
             cursor: pointer;
             font-size: 16px;
+            margin-right: 10px;
         }
-        .upload-button button:hover {
+        .button-group button:hover {
             background-color: #45a049;
         }
         .image-container {
@@ -56,16 +56,17 @@
     </style>
 </head>
 <body>
-    <div class="upload-button">
+    <div class="button-group">
         <a href="{% url 'upload_image' %}"><button type="button">Upload Image</button></a>
-    </div class="upload-button">
-    <div>
-        <a href="{% url 'logout' %}"><button type="button"> Logout </button></a>
+        <a href="{% url 'logout' %}"><button type="button">Logout</button></a>
     </div>
 
     <h1>Uploaded Images</h1>
 
     <div class="image-container">
+        {% if not images_with_predictions %}
+        <h1 style="color: red;">No images have been uploaded yet.</h1>
+        {% endif %}
         {% for item in images_with_predictions %}
         <div class="image-item">
             <h2 class="image-title">{{ item.image.title }}</h2>
